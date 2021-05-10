@@ -1,12 +1,15 @@
-import { StrictMode } from "react";
 import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
-import App from "./App";
+import reducer from "./reducers";
+import EventsIndex from "./components/events_index";
 
-const rootElement = document.getElementById("root");
+const store = createStore(reducer);
+
 ReactDOM.render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-  rootElement
+  <Provider store={store}>
+    <EventsIndex />
+  </Provider>,
+  document.getElementById("root")
 );
